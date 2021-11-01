@@ -8,4 +8,3 @@ class NewsController {
 }
 module.exports = new NewsController();
 
-const newsController = require('./NewsController');

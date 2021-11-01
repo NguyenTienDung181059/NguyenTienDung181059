@@ -1,13 +1,19 @@
 const newRoute = require('./news');
+const webdemoRoute = require('./webdemo');
 const siteRoute = require('./site');
+const meRoute = require('./me');
 function route(app) {
-    app.get('/', siteRoute);
+    app.use('/', siteRoute);
 
-    app.get('/new', newRoute);
+    app.use('/new', newRoute);
 
-    app.get('/search', siteRoute);
+    app.use('/search', siteRoute);
 
-    app.get('/new/:slug', newRoute);
+    app.use('/webdemo', webdemoRoute);
+
+    app.use('/me', meRoute);
+
+
 }
 
 module.exports = route;

@@ -1,6 +1,13 @@
+const Test = require('../models/TestDB');
+const { multipleMongoObj } = require('../../util/mongoose');
+
 class SiteController {
-    index(req, res) {
-        res.render('home');
+    index(req, res, next) {
+        Test.find({})
+            .then(webdata => { 
+            res.render('home', { webdata: multipleMongoObj(webdata) });
+        })
+            .catch((error) => next(error));
     }
     search(req, res) {
         res.render('search');
@@ -8,4 +15,3 @@ class SiteController {
 }
 module.exports = new SiteController();
 
-const siteController = require('./SiteController');
